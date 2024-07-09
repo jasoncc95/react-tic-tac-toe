@@ -2,3 +2,8 @@ In React, a component is a piece of reusable code that represents a part of a us
 
 A JSX element is a combination of JavaScript code and HTML tags that describes what you’d like to display. 
 
+React provides a special function called useState that you can call from your component to let it “remember” things.
+
+When you call a set function in a component, React automatically updates the child components inside too.
+
+React DevTools let you check the props and the state of your React components.
