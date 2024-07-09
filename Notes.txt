@@ -1,0 +1,4 @@
+In React, a component is a piece of reusable code that represents a part of a user interface. Components are used to render, manage, and update the UI elements in your application.
+
+A JSX element is a combination of JavaScript code and HTML tags that describes what you’d like to display. 
+
