@@ -7,3 +7,9 @@ React provides a special function called useState that you can call from your co
 When you call a set function in a component, React automatically updates the child components inside too.
 
 React DevTools let you check the props and the state of your React components.
+
+To collect data from multiple children, or to have two child components communicate with each other, declare the shared state in their parent component instead. The parent component can pass that state back down to the children via props. This keeps the child components in sync with each other and with their parent.
+
+By default, all child components re-render automatically when the state of a parent component changes. This includes even the child components that weren’t affected by the change.
+
+In React, it’s conventional to use onSomething names for props which represent events and handleSomething for the function definitions which handle those events.
