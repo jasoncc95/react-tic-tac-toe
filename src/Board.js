@@ -1,26 +1,29 @@
-import { useState } from "react";
+//import { useState } from "react";
 import Square from "./Square";
 import { calculateWinner } from "./WinnerCalculator";
 //The export JavaScript keyword makes this function accessible outside of this file. 
 //The default keyword tells other files using your code that it’s the main function in your file.
-export default function Board() {
+export default function Board({ xIsNext,squares, onPlay }) {
   //by declaring this variables with useState we can maintain and change the state of the board
-  const [xIsNext, setXIsNext] = useState(true); //to alternate between X and O
-  const [squares, setSquares] = useState(Array(9).fill(null)); //creates an array with nine elements and sets each of them to null
+  //commenting out the vairiables to let the Game component maintain the state
+  //const [xIsNext, setXIsNext] = useState(true); //to alternate between X and O
+  //const [squares, setSquares] = useState(Array(9).fill(null)); //creates an array with nine elements and sets each of them to null
   
   function handleClick(i) {
     if (calculateWinner(squares) || squares[i]) return; //if there is already a winner or a value, do nothing
 
     const nextSquares = squares.slice();
     xIsNext ? nextSquares[i] = "X" : nextSquares[i] = "O";
-    setSquares(nextSquares); //setting the next state of the board
-    setXIsNext(!xIsNext); //setting which letter is next
-  }
+
+    onPlay(nextSquares); //callback function from Game component to set the next state
+    //setSquares(nextSquares); //setting the next state of the board
+    //setXIsNext(!xIsNext); //setting which letter is next
+  };
   
   const winner = calculateWinner(squares);
   let status;
   if (winner) {
-    status = winner == "Draw" ? "Its a draw" : 'Winner is ' + winner;
+    status = winner == 'Draw' ? 'Its a draw' : 'Winner is ' + winner;
   } else {
     status = 'Next player is ' + (xIsNext ? 'X' : 'O');
   }
